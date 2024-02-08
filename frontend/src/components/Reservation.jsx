@@ -39,7 +39,7 @@ function Reservation() {
 
     return (
         <>
-            <section className="reservation">
+            <section className="reservation" id='section__reservation'>
                 <div className="reservation__container">
                     <div className="reservation__title">
                         <h1 className="reservation__title__title">L'escale Restaurant</h1>
