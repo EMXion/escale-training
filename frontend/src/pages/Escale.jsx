@@ -3,7 +3,7 @@ import About from '../components/About'
 import Menu from '../components/Menu/Menu'
 import Reservation from '../components/Reservation'
 import Contact from '../components/Contact'
-
+import Footer from '../components/Footer'
 
 
 function Escale() {
@@ -15,6 +15,7 @@ function Escale() {
       <Menu />
       <Reservation />
       <Contact />
+      <Footer />
     </>
   )
 }

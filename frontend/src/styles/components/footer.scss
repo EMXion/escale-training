@@ -1,0 +1,41 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 10px;
+    font-size: 20px;
+    color: $tertiary; 
+    font-family: 'Pinyon Script';
+
+    &__contact {
+        display: flex;
+        align-items: center;
+    }
+
+    &__documents {
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+    }
+
+    &__address {
+        margin-left: 10px;
+    }
+
+    &__separation {
+        color: $primary;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    &__facebook, &__instagram {
+        width: 40px; 
+        height: 40px; 
+        margin-right: 10px;
+    }
+}
+
+
+
+
