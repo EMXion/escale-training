@@ -1,6 +1,7 @@
 const Reservations = require('../models/reservations.model');
 const { addLog } = require("../services/logs/logs");
 const { ResHelper } = require("../helpers/res.helper");
+const { transporter } = require("../mail/transporter.mail");
 
 const getAllReservations = async (req, res) => {
     try {
@@ -36,6 +37,8 @@ const createReservation = async (req, res) => {
             return ResHelper.send(res, 400, "Error, the reservation already exist", checkReservationName);
         }
 
+
+
         const maxReservation = await Reservations.findOne({}).sort({ id: -1 });
         let newId = maxReservation ? maxReservation.id + 1 : 1;
 
@@ -47,7 +50,17 @@ const createReservation = async (req, res) => {
             people: people,
             comment: comment
         });
+
         const createReservation = await newReservation.save();
+
+        console.log(" -- Ajout d'une nouvelle réservation -- ");
+
+        await transporter(name, date, hour, people, comment);
+
+        console.log("Voici la reception de la réservation après la méthode transporter : ", name, date, hour, people, comment)
+
+        console.log(" -------------------------------------- ")
+        
         addLog("info", `createReservation ${name}`, "reservations.controller.js");
         return ResHelper.send(res, 201, "Success, the reservation has been created", createReservation);
     } catch (e) {
