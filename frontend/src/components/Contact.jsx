@@ -1,7 +1,6 @@
-import React, {useState} from 'react'
+import React from 'react';
 
 function Contact() {
-
     return (
         <>
             <section className="contact">
@@ -10,7 +9,7 @@ function Contact() {
                     </div>
                     <div className="contact__content-right">
                         <h1 className="contact__content-title">Contactez nous</h1>
-                        <form className="contact__form" method="POST">
+                        <form className="contact__form" action="https://formspree.io/f/mvoeazla" method="POST" autoComplete="off">
                             <div className="contact__form-line">
                                 <div className="contact__form-input">
                                     <label className="contact__form-input__label">Nom</label>
@@ -33,13 +32,11 @@ function Contact() {
                                 <button className="button" type="submit">Envoyer</button>
                             </div>
                         </form>
-
                     </div>
                 </div>
-
             </section>
         </>
-    )
+    );
 }
 
-export default Contact
+export default Contact;
