@@ -6,8 +6,6 @@ const nodemailer = require('nodemailer');
 function transporter( name, date, hour, people, comment ){
     try {
         
-        console.log("Voici la reception lors de l'envoie du mail dans la méthode transporter : ", name, date, hour, people, comment);
-
         var transport = nodemailer.createTransport({
             service: process.env.HOST_NODEMAILER,
             auth: {
