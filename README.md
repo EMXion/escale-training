@@ -177,7 +177,19 @@ Cette partie concerne l'ensemble des choses réalisées après l'ajout des fonct
 
 ### Ajout d'un footer
 
-( Lucas, ajoute la maquette du footer stp)
+![Maquette footer](./frontend/public/maquette_footer.png)
+
+Une maquette a d'abord été effectuée, comme ci-dessus 
+
+#### Eléments ajoutés 
+
+- Le fichier frontend/src/components/footer.jsx qui contient le code HTML du footer 
+
+- Le fichier frontend/src/styles/components/footer.scss qui contient le code css du footer 
+
+#### Eléments modifiés 
+
+- Le fichier frontend/src/components/App.jsx où le footer a été ajouté 
 
 ### Ajout d'un mailer 
 
@@ -259,6 +271,16 @@ Pour ajouter une redirection du menu vers les components, contact, menu et rése
 ```
 
 ### Ajout du style pour la pop-up
+
+#### Eléments ajoutés 
+
+- Le fichier frontend/src/components/PopupReservation.jsx qui contient le code HTML de la popup, réalisé avec Sweetalert2 
+
+- Le fichier frontend/src/styles/components/popupreservation.scss qui contient le code css modifiable de la popup Sweetalert2 
+
+#### Eléments modifiés 
+
+- Le fichier frontend/src/components/Reservation.jsx a été modifié pour pouvoir afficher les popup, quand une réservation est effectuée, acceptée ou refusée. La page est rechargée à chaque fois qu'une réservation est effectuée, et il est impossible de cliquer en dehors , on est obligés de cliquer sur le bouton pour accepter. 
 
 ### Formulaire de contact
 
