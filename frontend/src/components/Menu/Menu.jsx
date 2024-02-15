@@ -3,6 +3,7 @@ import Wines from './Wine';
 import Desserts from './Desserts';
 import Discovery from './Discovery';
 import Escale from './Escale';
+import Drinks from './Drinks';
 
 function Menu() {
     const [selectedMenuItem, setSelectedMenuItem] = useState('Menu Découverte');
@@ -22,7 +23,7 @@ function Menu() {
             case 'Menu Escale':
                 return <Escale />;
             default:
-                return <Discovery />;
+                return <Drinks />;
         }
     };
 
