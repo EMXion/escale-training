@@ -1,4 +1,6 @@
 
+import { Link, animateScroll as scroll } from "react-scroll";
+
 function Accueil() {
     return (
         <>
@@ -6,17 +8,23 @@ function Accueil() {
                 <div className="presentation__container">
                 <p className="presentation__title">L Escale</p>
                 <div className="presentation__content">
-                <div className="presentation__contact">
-                    <p className="presentation__contact__title">Contact</p>
-                </div>
-                <div className="presentation__menu">
-                    <div className="presentation__menu__content">
-                    <p className="presentation__menu__content-title">Menu</p>
+                <Link to="section__contact" spy={true} smooth={true} duration={1500}>
+                    <div className="presentation__contact">
+                        <p className="presentation__contact__title">Contact</p>
                     </div>
-                </div>
-                <div className="presentation__reservation">
-                    <p className="presentation__reservation__content-title">Reservation</p>
-                </div>
+                </Link>
+                <Link to="section__menu" spy={true} smooth={true} offset={100} duration={500}>
+                    <div className="presentation__menu">
+                        <div className="presentation__menu__content">
+                        <p className="presentation__menu__content-title">Menu</p>
+                        </div>
+                    </div>
+                </Link>
+                <Link to="section__reservation" spy={true} smooth={true} offset={-50} duration={1000}>
+                    <div className="presentation__reservation">
+                        <p className="presentation__reservation__content-title">Reservation</p>
+                    </div>
+                </Link>
                 </div>
                 </div>
             </section>

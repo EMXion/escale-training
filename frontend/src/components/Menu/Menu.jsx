@@ -27,7 +27,7 @@ function Menu() {
     };
 
     return (
-        <div className="menu">
+        <div className="menu" id='section__menu'>
             <div className="menu__container">
                 <h1 className="menu__title">Découvrez notre Menu</h1>
                 <div className="menu__nav">
