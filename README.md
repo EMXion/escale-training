@@ -169,4 +169,140 @@ Implémenter un système pour récupérer le message envoyé par le client par m
 - [@adriengmbt](https://www.github.com/adriengmbt)
 - [@crepincorentin](https://www.github.com/crepincorentin)
 
+# Maintenance
 
+Cette partie concerne l'ensemble des choses réalisées après l'ajout des fonctionnalités et la correction de bug sur le site de base "Escale Training".
+
+## Ajouts
+
+### Ajout d'un footer
+
+![Maquette footer](./frontend/public/maquette_footer.png)
+
+Une maquette a d'abord été effectuée, comme ci-dessus 
+
+#### Eléments ajoutés 
+
+- Le fichier frontend/src/components/footer.jsx qui contient le code HTML du footer 
+
+- Le fichier frontend/src/styles/components/footer.scss qui contient le code css du footer 
+
+#### Eléments modifiés 
+
+- Le fichier frontend/src/components/App.jsx où le footer a été ajouté 
+
+### Ajout d'un mailer 
+
+#### Éléments modifiés
+
+- Le fichier frontend/src/components/Reservation.jsx : Modification de la phrase dans le 'alert' lorsque l'utilisateur clique sur le bouton de réservation d'une table.
+
+```js
+alert ("Votre réservation a bien été prise en compte");
+```
+
+- Le fichier backend/src/controllers/reservations.controler.js : Ajout de l'appel vers la méthode permettant d'envoyer un mail grâce à nodeMailer.
+
+```js
+await transporter(name, date, hour, people, comment);
+```
+
+#### Éléments ajoutés
+
+- Le fichier backend/src/mail/transporter.mail.js : Ajout de la méthode permettant d'envoyer un mail grâce à nodeMailer en respectant la mise en place du 'try and catch'.
+
+```js
+function transporter( name, date, hour, people, comment ){
+    try {
+        var transport = nodemailer.createTransport({
+            service: process.env.HOST_NODEMAILER,
+            auth: {
+              user: process.env.USER_NODEMAILER,
+              pass: process.env.PASS_NODEMAILER,
+            },
+          });
+  
+        var mailOptions = {
+          from: process.env.USER_NODEMAILER, // Adresse e-mail de l'expéditeur
+          to: process.env.USER_NODEMAILER, // Adresse e-mail du destinataire
+          subject: 'Réservation de table pour "L\'Escale',
+          text: 'Vous avez bien réservez une table le ' + date + ' à ' + hour + ' sous le nom de ' + name + ' pour ' + people + ' personne(s) avec comme information (Ou rien si vide) : ' + comment 
+        };
+  
+        transport.sendMail(mailOptions);
+
+        return ResHelper.send(res, 201, "Success, the contact has been created");
+    } catch (e) {
+        addLog("error", e, "transporter.mail.js");
+    }
+}
+```
+
+- Des variables dans le fichier backend/.env : Ces variables vont permettre de reçevoir le mail grâce à nodeMailer.
+
+```
+USER_NODEMAILER = "votre_mail"
+PASS_NODEMAILER = "votre_mot_de_passe_nodemailer"
+HOST_NODEMAILER = "votre_service_de_mail"
+```
+Exemple lorsqu'on utilise Gmail :
+```
+USER_NODEMAILER = "mon_mail@gmail.com"
+PASS_NODEMAILER = "mdpmail"
+HOST_NODEMAILER = "Gmail"
+```
+Le PASS_NODEMAILER est trouvable sur votre compte Gmail.
+
+### Ajout de la carte des boissons
+
+Pour l'ajout de cette feature on a ajouté un fichier de nom Drinks.jsx frontend\src\components\Menu\Drinks.jsx pour l'affichage. On a du modifier dans le Menu.jsx pour qu'il affiche le bon composant dans le fichier frontend\src\components\Menu\Menu.jsx.
+
+Ensuite pour gerer les appels dans la base on utilise un service donc on a ajouté le fichier frontend\src\api\ApiDrinks.jsx.
+
+Ensuite on a géré le css dans des fichiers scss donc on a ajouter le fichier drinks.scss frontend\src\styles\components\menu\drinks.scss.
+
+Pour finir on a ajouter le lien dans le main frontend\src\styles\main.scss
+
+## Corrections
+
+### Redirection du Menu
+Pour ajouter une redirection du menu vers les components, contact, menu et réservation, il suffit d'installer le package react-scroll et d'utiliser la balise Link et de rajouter un id sur les différents components.
+```html
+<section className="reservation" id='section__reservation'>
+```
+```html
+<Link to="section__contact" spy={true} smooth={true} duration={1500}>
+    <div className="presentation__contact">
+        <p className="presentation__contact__title">Contact</p>
+    </div>
+</Link>
+```
+
+### Ajout du style pour la pop-up
+
+#### Eléments ajoutés 
+
+- Le fichier frontend/src/components/PopupReservation.jsx qui contient le code HTML de la popup, réalisé avec Sweetalert2 
+
+- Le fichier frontend/src/styles/components/popupreservation.scss qui contient le code css modifiable de la popup Sweetalert2 
+
+#### Eléments modifiés 
+
+- Le fichier frontend/src/components/Reservation.jsx a été modifié pour pouvoir afficher les popup, quand une réservation est effectuée, acceptée ou refusée. La page est rechargée à chaque fois qu'une réservation est effectuée, et il est impossible de cliquer en dehors , on est obligés de cliquer sur le bouton pour accepter. 
+
+### Formulaire de contact
+
+Pour le formulaire de contact, il faut ajouter un 'action=' pointant vers le lien de votre compte Formspree.
+
+```html
+<form className="contact__form" action="https://formspree.io/f/mvoeazla" method="POST" autoComplete="off">
+```
+
+Vous pouvez créer un compte pour obtenir votre lien en suivant l'adresse suivante : https://formspree.io/register
+
+## Authors
+
+- Ogès Florian : [@DarkgamepsFlo](https://github.com/DarkgamepsFlo)
+- Lutic Enzo : [@PheraxLemitige](https://www.github.com/PheraxLemitige)
+- Bugnon Lucas : [@LBugnon42](https://www.github.com/LBugnon42)
+- Picquet Maxime : [@EMXion](https://www.github.com/EMXion)
