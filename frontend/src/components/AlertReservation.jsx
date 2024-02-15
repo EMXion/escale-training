@@ -5,9 +5,12 @@ function AlertReservation(titre, texte, icone) {
         Swal.fire({
             title: titre,
             text: texte,
-            icon: icone
+            icon: icone, 
+            allowOutsideClick: false
+        }).then(() => {
+            window.location.reload();
         })
     )
 }
 
-export default AlertReservation;
+export default AlertReservation

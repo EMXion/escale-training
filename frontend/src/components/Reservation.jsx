@@ -1,5 +1,4 @@
 import React from 'react'
-import Swal from 'sweetalert2'
 import { useState } from 'react';
 import {createReservation} from '../api/ApiReservation';
 import AlertReservation from './AlertReservation';
@@ -27,7 +26,6 @@ function Reservation() {
 
             if (response.status === 201) {
                 AlertReservation("Réussi !", "Votre réservation a bien été prise en compte", "success")
-                window.location.reload();
             }
             else {
                 AlertReservation("Erreur...", "Une erreur est survenue, veuillez réessayer", "error")
