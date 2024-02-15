@@ -53,14 +53,8 @@ const createReservation = async (req, res) => {
 
         const createReservation = await newReservation.save();
 
-        console.log(" -- Ajout d'une nouvelle réservation -- ");
-
         await transporter(name, date, hour, people, comment);
 
-        console.log("Voici la reception de la réservation après la méthode transporter : ", name, date, hour, people, comment)
-
-        console.log(" -------------------------------------- ")
-        
         addLog("info", `createReservation ${name}`, "reservations.controller.js");
         return ResHelper.send(res, 201, "Success, the reservation has been created", createReservation);
     } catch (e) {

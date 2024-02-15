@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
 const startServer = async (port) => {
     connectToDatabase();
     app.listen(port, () => {
-        console.log(`Listening on port ${port}...`);
+        console.info(`Listening on port ${port}...`);
     });
 
     app.use("/drinks", drinksRoute);
