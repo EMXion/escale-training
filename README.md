@@ -255,6 +255,14 @@ Le PASS_NODEMAILER est trouvable sur votre compte Gmail.
 
 ### Ajout de la carte des boissons
 
+Pour l'ajout de cette feature on a ajouté un fichier de nom Drinks.jsx frontend\src\components\Menu\Drinks.jsx pour l'affichage. On a du modifier dans le Menu.jsx pour qu'il affiche le bon composant dans le fichier frontend\src\components\Menu\Menu.jsx.
+
+Ensuite pour gerer les appels dans la base on utilise un service donc on a ajouté le fichier frontend\src\api\ApiDrinks.jsx.
+
+Ensuite on a géré le css dans des fichiers scss donc on a ajouter le fichier drinks.scss frontend\src\styles\components\menu\drinks.scss.
+
+Pour finir on a ajouter le lien dans le main frontend\src\styles\main.scss
+
 ## Corrections
 
 ### Redirection du Menu
