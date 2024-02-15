@@ -1,4 +1,5 @@
 import React from 'react'
+import Swal from 'sweetalert2'
 import { useState } from 'react';
 import {createReservation} from '../api/ApiReservation';
 
@@ -24,11 +25,19 @@ function Reservation() {
             const response = await createReservation(formData);
 
             if (response.status === 201) {
-                alert ("Votre réservation a bien été prise en compte");
+                Swal.fire({
+                    title: "Réussi !",
+                    text: "Votre réservation a bien été prise en compte",
+                    icon: "success"
+                  });
                 window.location.reload();
             }
             else {
-                alert ("Une erreur est survenue, veuillez réessayer");
+                Swal.fire({
+                    title: "Erreur...",
+                    text: "Une erreur est survenue, veuillez réessayer",
+                    icon: "error"
+                  });
             }
 
         } catch (error) {
