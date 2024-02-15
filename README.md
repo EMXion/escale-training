@@ -246,6 +246,17 @@ Le PASS_NODEMAILER est trouvable sur votre compte Gmail.
 ## Corrections
 
 ### Redirection du Menu
+Pour ajouter une redirection du menu vers les components, contact, menu et réservation, il suffit d'installer le package react-scroll et d'utiliser la balise Link et de rajouter un id sur les différents components.
+```html
+<section className="reservation" id='section__reservation'>
+```
+```html
+<Link to="section__contact" spy={true} smooth={true} duration={1500}>
+    <div className="presentation__contact">
+        <p className="presentation__contact__title">Contact</p>
+    </div>
+</Link>
+```
 
 ### Ajout du style pour la pop-up
 
