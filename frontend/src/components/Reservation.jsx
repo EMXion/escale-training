@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import {createReservation} from '../api/ApiReservation';
+import AlertReservation from './AlertReservation';
 
 function Reservation() {
     const [name, setName] = useState("");
@@ -24,11 +25,10 @@ function Reservation() {
             const response = await createReservation(formData);
 
             if (response.status === 201) {
-                alert ("Votre réservation a bien été prise en compte");
-                window.location.reload();
+                AlertReservation("Réussi !", "Votre réservation a bien été prise en compte", "success")
             }
             else {
-                alert ("Une erreur est survenue, veuillez réessayer");
+                AlertReservation("Erreur...", "Une erreur est survenue, veuillez réessayer", "error")
             }
 
         } catch (error) {
